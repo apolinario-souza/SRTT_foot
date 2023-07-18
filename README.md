@@ -1,0 +1,1 @@
+This is the repository for the task similar to the article "Du, Y., Valentini, N. C., Kim, M. J., Whitall, J., & Clark, J. E. (2017). Children and adults both learn motor sequences quickly, but do so differently. Frontiers in psychology, 8, 158."
