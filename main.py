@@ -16,60 +16,6 @@ pygame.display.set_caption("Foot serial reaction time task")
 reaction_times = []  # Lista para armazenar os tempos de reação
  
     
-
-def draw_backgroud():
-    size_x = WIDTH*.12
-    size_y = HEIGHT*.25
-    
-    fator_centro_esq = 0.89
-    fator_centro_dir = 1.21
-     
-    
-    ##################LADO ESQUERDO###############
-    
-    #centro   
-    x = (WIDTH // 2  - (size_x//2))*fator_centro_esq 
-    y = HEIGHT // 2 - (size_y//2)
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
-    
-    #Superior
-    x = (WIDTH // 2  - (size_x//2))*fator_centro_esq 
-    y = (HEIGHT // 2 - (size_y//2))*.25 #Ajustar a altura
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
-    
-    #Inferior
-    x = (WIDTH // 2  - (size_x//2))*fator_centro_esq 
-    y = (HEIGHT // 2 - (size_y//2))*1.75 #Ajustar a altura, a logica do y é invertida
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
-    
-    #lateral direito
-    x = (WIDTH // 2  - (size_x//2))*.57
-    y = HEIGHT // 2 - (size_y//2)
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
-    
-    
-    ###################LADO DIREITO##################
-    #centro     
-    x = (WIDTH // 2  - (size_x//2))*fator_centro_dir
-    y = HEIGHT // 2 - (size_y//2)
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))      
-    
-    #Superior
-    x = (WIDTH // 2  - (size_x//2))*fator_centro_dir
-    y = (HEIGHT // 2 - (size_y//2))*.25 #Ajustar a altura, quanto maior menor a distância
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
-    
-    #Inferior
-    x = (WIDTH // 2  - (size_x//2))*fator_centro_dir
-    y  = (HEIGHT // 2 - (size_y//2))*1.75 #Ajustar a altura, a logica do y é invertida
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
-        
-    #lateral
-    x = (WIDTH // 2  - (size_x//2))*1.53
-    y = HEIGHT // 2 - (size_y//2)
-    pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
-
-
 def draw_warning (text, WIDTH, HEIGHT,cor_texto):
     
     cor_fundo = (0, 0, 0)  # preto
@@ -90,7 +36,7 @@ def draw_warning (text, WIDTH, HEIGHT,cor_texto):
     pygame.display.flip()
 
 def draw_button(check, cor):
-    draw_backgroud()
+    #draw_backgroud()
     size_x = WIDTH*.12
     size_y = HEIGHT*.25
     
@@ -100,8 +46,7 @@ def draw_button(check, cor):
     if check==2:
         #Lateral direito
         x = (WIDTH // 2  - (size_x//2))*1.53
-        y = HEIGHT // 2 - (size_y//2)
-        
+        y = HEIGHT // 2 - (size_y//2)     
         
     elif check==3:
         #Superior direito
@@ -112,8 +57,7 @@ def draw_button(check, cor):
         #Superior esquerdo
         x = (WIDTH // 2  - (size_x//2))*fator_centro_esq 
         y = (HEIGHT // 2 - (size_y//2))*.25  
-        
-        
+                
         
     elif check==5:
         #Lateral Esquerdo
@@ -129,6 +73,16 @@ def draw_button(check, cor):
         #Inferior direito
         x = (WIDTH // 2  - (size_x//2))*fator_centro_dir
         y  = (HEIGHT // 2 - (size_y//2))*1.75 #Ajustar a altura, a logica do y é invertida
+    elif check == 8:
+        #centro esquerdo  
+        x = (WIDTH // 2  - (size_x//2))*fator_centro_esq 
+        y = HEIGHT // 2 - (size_y//2)
+        pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y))
+    elif check == 9:
+        #centro direito   
+        x = (WIDTH // 2  - (size_x//2))*fator_centro_dir
+        y = HEIGHT // 2 - (size_y//2)
+        pygame.draw.rect(screen, GRAY, (x, y, size_x,size_y)) 
        
         
         
@@ -142,6 +96,15 @@ def draw_button(check, cor):
  
 def draw_stimulus(position,interstimulus):
     start_time = time.time()
+    draw_button(2, GRAY) #background
+    draw_button(3, GRAY) #background
+    draw_button(4, GRAY) #background
+    draw_button(5, GRAY) #background
+    draw_button(6, GRAY) #background
+    draw_button(7, GRAY) #background
+    #draw_button(8, GRAY) #background
+    #draw_button(9, GRAY) #background
+    
     '''
     Função para desenhar os estímulos na tela
     '''  
