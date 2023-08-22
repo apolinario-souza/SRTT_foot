@@ -117,6 +117,7 @@ def draw_stimulus(position,interstimulus):
     elif position==1:
         end_time = time.time()        
         draw_warning ("Vai!",WIDTH, HEIGHT, GREEN)
+    
             
 # Função para apresentar um estímulo e registrar a resposta do participante
 def present_stimulus(position,interstimulus):
@@ -133,10 +134,8 @@ def present_stimulus(position,interstimulus):
                 pygame.quit()
                 sys.exit()
             
-            if event.type == pygame.KEYDOWN:
-                
-                if event.key == key_mapping[position] and position>=2:
-                    
+            if event.type == pygame.KEYDOWN:                
+                if event.key == key_mapping[position] and position>=2:                    
                     response = False
                     end_time = time.time()
                     reaction_time = end_time - start_time 
@@ -181,12 +180,17 @@ while running:
     for k, position in enumerate(SEQUENCE):
         present_stimulus(position,INTERSTIMULUS_INTERVAL[k])
         cont =+1   
+    
     trial +=1
     
     pygame.display.flip()
     
     ind = (len(SEQUENCE)-1)*-1
     save = np.array(reaction_times[ind:])
+    n1,n2,n3 = format(save[0],".3f"),format(save[1],".3f"),format(save[2],".3f")
+    draw_warning ('TR= '+str(n1)+' T1= '+str(n1)+' T2= '+str(n3), WIDTH, HEIGHT, GREEN)
+    
+    time.sleep(2000/1000.0) #tempo do feedback
     
     np.savetxt('trials/SUJ'+str(SUJ)+'_trial'+str(trial)+'.csv', save, delimiter=',')
     
